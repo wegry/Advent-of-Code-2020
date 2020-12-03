@@ -28,7 +28,6 @@ impl PolicyAndPass {
 
     fn is_password_valid_ii(&self) -> bool {
         let chars = self.password.chars().collect::<Vec<_>>();
-        println!("{:?}", chars);
         let policy_char = Some(&self.policy.character);
         match (
             chars.get(self.policy.lower - 1) == policy_char,
@@ -43,8 +42,6 @@ impl PolicyAndPass {
 
 impl FromStr for PolicyAndPass {
     type Err = ParseIntError;
-    // Parses a color hex code of the form '#rRgGbB..' into an
-    // instance of 'RGB'
     fn from_str(line: &str) -> Result<Self, Self::Err> {
         lazy_static! {
             static ref RE: Regex = Regex::new(

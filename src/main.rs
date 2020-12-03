@@ -2,6 +2,7 @@
 extern crate lazy_static;
 mod day1;
 mod day2;
+mod day3;
 
 fn main() {
     macro_rules! run {
@@ -16,5 +17,5 @@ fn main() {
         );
     };
 
-    run!(day1, day2);
+    run!(day1, day2, day3);
 }
