@@ -84,10 +84,10 @@ const SLOPES: [(usize, usize); 5] = [(1, 1), (3, 1), (5, 1), (7, 1), (1, 2)];
 pub fn part_2() {
     let data = parse();
 
-    let result = SLOPES
+    let result: usize = SLOPES
         .iter()
         .map(|s| count_trees_with_slope(data.clone(), *s))
-        .fold(1, |acc, curr| acc * curr);
+        .product();
 
     println!("The product of tree counts at slopes: {}", result);
 }

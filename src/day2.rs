@@ -92,11 +92,8 @@ fn parse() -> Vec<PolicyAndPass> {
 
 pub fn part_1() {
     let data = parse();
-    let valid = data
-        .into_iter()
-        .filter(|pp| pp.is_password_valid())
-        .collect::<Vec<_>>();
-    println!("Valid count: {}", valid.len())
+    let valid = data.into_iter().filter(|pp| pp.is_password_valid()).count();
+    println!("Valid count: {}", valid)
 }
 
 pub fn part_2() {
@@ -104,8 +101,8 @@ pub fn part_2() {
     let valid = data
         .into_iter()
         .filter(|pp| pp.is_password_valid_ii())
-        .collect::<Vec<_>>();
-    println!("Valid count: {}", valid.len())
+        .count();
+    println!("Valid count: {}", valid)
 }
 
 #[cfg(test)]
