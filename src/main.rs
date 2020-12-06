@@ -10,14 +10,22 @@ mod day5;
 mod day6;
 
 fn main() {
+    // https://notes.iveselov.info/programming/time_it-a-case-study-in-rust-macros#with-tt-specifier
+    macro_rules! timed {
+     ($context:literal, $b:block) => {
+        println!("{}:", $context);
+        let timer = std::time::Instant::now();
+        $b
+        println!("took {:?}\n", timer.elapsed());
+    };
+    };
+
     macro_rules! run {
         ($($module:tt),*) => (
             $(
                 println!("Day {}", $module::DAY);
-                println!("Part 1:");
-                $module::part_1();
-                println!("Part 2:");
-                $module::part_2();
+                timed!("Part 1", {$module::part_1()});
+                timed!("Part 2", {$module::part_2()});
             )*
         );
     };
