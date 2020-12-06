@@ -14,6 +14,7 @@ name = "aoc_2020"
 version = "0.1.0"
 dependencies = [
  "counter",
+ "indoc",
  "lazy_static",
  "maplit",
  "regex",
@@ -32,6 +33,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "698f7363cfc52779c375902ea6bc8b407f4b0b43be34e83cfdc8231a0e7545fe"
 dependencies = [
  "num-traits",
+]
+
+[[package]]
+name = "indoc"
+version = "1.0.3"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e5a75aeaaef0ce18b58056d306c27b07436fbb34b8816c53094b76dd81803136"
+dependencies = [
+ "unindent",
 ]
 
 [[package]]
@@ -87,3 +97,9 @@ checksum = "d40c6d1b69745a6ec6fb1ca717914848da4b44ae29d9b3080cbee91d72a69b14"
 dependencies = [
  "lazy_static",
 ]
+
+[[package]]
+name = "unindent"
+version = "0.1.7"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "f14ee04d9415b52b3aeab06258a3f07093182b88ba0f9b8d203f211a7a7d41c7"

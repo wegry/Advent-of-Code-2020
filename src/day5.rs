@@ -3,7 +3,7 @@ use std::convert::Infallible;
 use std::fs;
 use std::str::FromStr;
 
-pub const DAY: u16 = 1;
+pub const DAY: u16 = 5;
 
 #[derive(Debug, PartialEq, Eq, PartialOrd)]
 struct Seat {
