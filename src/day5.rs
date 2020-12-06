@@ -1,11 +1,10 @@
-use std::cmp::Ordering;
 use std::convert::Infallible;
 use std::fs;
 use std::str::FromStr;
 
 pub const DAY: u16 = 5;
 
-#[derive(Debug, PartialEq, Eq, PartialOrd)]
+#[derive(Debug, PartialEq, Eq, PartialOrd, Ord)]
 struct Seat {
     row: usize,
     col: usize,
@@ -25,16 +24,16 @@ impl FromStr for Seat {
 
         let as_chars = raw.chars().collect::<Vec<_>>();
 
-        for i in 0..7 {
-            match as_chars[i] {
+        for (i, c) in as_chars.iter().enumerate().take(7) {
+            match c {
                 'F' => (),
                 'B' => row |= 1 << (6 - i),
                 _ => (),
             }
         }
 
-        for i in 0..3 {
-            match as_chars[i + 7 /* ignore row designators */] {
+        for (i, c) in as_chars.iter().skip(7).enumerate() {
+            match c {
                 'R' => col |= 1 << (2 - i),
                 'L' => (),
                 _ => (),
@@ -42,12 +41,6 @@ impl FromStr for Seat {
         }
 
         Ok(Seat { row, col })
-    }
-}
-
-impl Ord for Seat {
-    fn cmp(&self, other: &Self) -> Ordering {
-        self.id().cmp(&other.id())
     }
 }
 

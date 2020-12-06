@@ -129,7 +129,7 @@ impl Identity {
                 let raw = &m[&key];
 
                 let result = f(raw.to_string());
-                if let Err(_) = result {
+                if result.is_err() {
                     return false;
                 }
 
