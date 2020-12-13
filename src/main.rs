@@ -8,6 +8,7 @@ mod day3;
 mod day4;
 mod day5;
 mod day6;
+mod day7;
 
 fn main() {
     // https://notes.iveselov.info/programming/time_it-a-case-study-in-rust-macros#with-tt-specifier
@@ -30,5 +31,5 @@ fn main() {
         );
     };
 
-    run!(day1, day2, day3, day4, day5, day6);
+    run!(day1, day2, day3, day4, day5, day6, day7);
 }
