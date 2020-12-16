@@ -9,7 +9,7 @@ fn parse_str(raw: &str) -> Vec<u32> {
         .collect::<Vec<_>>();
     joltages.push(0);
     joltages.push(joltages.iter().max().unwrap() + 3);
-    joltages.sort();
+    joltages.sort_unstable();
     joltages
 }
 
@@ -64,10 +64,12 @@ fn count_possible_chains(from: Vec<u32>) -> u128 {
 
 pub fn part_2() {
     let raw = fs::read_to_string("./src/day10.txt").unwrap();
-    let parsed = parse_str(&raw);
+    let _parsed = parse_str(&raw);
 
-    let result = count_possible_chains(parsed);
-    dbg!(result);
+    count_possible_chains(vec![]);
+
+    // let result = count_possible_chains(parsed);
+    // dbg!(result);
 }
 
 #[cfg(test)]

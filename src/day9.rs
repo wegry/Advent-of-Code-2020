@@ -9,13 +9,10 @@ fn parse_str(raw: &str) -> Vec<u128> {
 
 fn first_not_sum_of_preable(preable: usize, candidates: Vec<u128>) -> Option<u128> {
     for window in candidates.windows(preable + 1) {
-        let preable_nums = window[..=preable]
-            .into_iter()
-            .copied()
-            .collect::<BTreeSet<_>>();
+        let preable_nums = window[..=preable].iter().copied().collect::<BTreeSet<_>>();
         let current = window[preable];
 
-        if !preable_nums.iter().any(|i| {
+        let is_sum = preable_nums.iter().any(|i| {
             preable_nums.iter().any(|j| {
                 if i == j {
                     return false;
@@ -23,7 +20,9 @@ fn first_not_sum_of_preable(preable: usize, candidates: Vec<u128>) -> Option<u12
 
                 i + j == current
             })
-        }) {
+        });
+
+        if !is_sum {
             return Some(current);
         }
     }
@@ -42,7 +41,7 @@ pub fn part_1() {
 fn find_continuous_number_set(matching: u128, candidates: Vec<u128>) -> Option<(u128, u128)> {
     for preable in 2..=candidates.len() {
         for window in candidates.windows(preable) {
-            let preable_nums = window.into_iter().copied().collect::<BTreeSet<_>>();
+            let preable_nums = window.iter().copied().collect::<BTreeSet<_>>();
 
             if preable_nums.iter().sum::<u128>() == matching {
                 return Some((
